@@ -13,7 +13,7 @@ $data = JsonHelper::read('Base');
         <link rel="shortcut icon" href="assets/images/favicon_1.ico">
 
         <title>活动管理</title>
-        <link href="assets/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" />
+        <link href="assets/plugins/bootstrap-table/css/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/plugins/switchery/css/switchery.min.css" rel="stylesheet" />
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
@@ -205,7 +205,9 @@ $data = JsonHelper::read('Base');
         <script src="assets/js/jquery.scrollTo.min.js"></script>
 
         <script src="assets/plugins/switchery/js/switchery.min.js"></script>
-        <script src="assets/plugins/bootstrap-select/js/bootstrap-select.min.js" type="text/javascript"></script>
+        <script src="assets/plugins/bootstrap-table/js/bootstrap-table.min.js"></script>
+
+        <script src="assets/pages/jquery.bs-table.js"></script>
 
         <script src="assets/js/jquery.core.js"></script>
         <script src="assets/js/jquery.app.js"></script>
