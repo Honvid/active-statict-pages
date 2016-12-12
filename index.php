@@ -159,6 +159,8 @@ $data = JsonHelper::read('Base');
                                                         </td>
                                                         <td>
                                                             <input type="checkbox"
+                                                                   class="switch-box"
+                                                                   data-key="<?php echo $key; ?>"
                                                                 <?php if (!empty($value['status'])): ?>
                                                                     checked
                                                                 <?php endif ?> id="status-<?php echo $key; ?>" data-plugin="switchery" data-color="#34d3eb" data-size="small" />
@@ -213,33 +215,61 @@ $data = JsonHelper::read('Base');
         <script src="assets/js/jquery.app.js"></script>
 
         <script type="text/javascript">
-            $('.edit').on('click', function() {
-                var key = $(this).data('key');
-                var title = $('#title-' + key).val();
-                var num = $('#num-' + key).val();
-                var status = $('#status-' + key);
-                if(title == '' || !num) {
-                    alert('不能为空！');
-                    return false;
-                }
-                var check = 0;
-                if(status.is(':checked')) {
-                    check = 1;
-                }
-                $.ajax({
-                    url:'/save.php',
-                    data:{'type':'Base','key':parseInt(key), 'title':title, 'num' : num, 'status': check},
-                    type:'POST',
-                    success:function (response) {
-                        console.log(response);
-                        alert('修改成功！');
-                        location.reload();
-                    },
-                    error:function(message) {
-                        console.log(message)
+            $(document).ready(function () {
+                $('.switch-box').on('change', function () {
+                    var key = $(this).data('key');
+                    var title = $('#title-' + key).val();
+                    var num = $('#num-' + key).val();
+                    var status = $('#status-' + key);
+                    if (title == '' || !num) {
+                        alert('不能为空！');
+                        return false;
                     }
-                })
-            })
+                    var check = 0;
+                    if (status.is(':checked')) {
+                        check = 1;
+                    }
+                    $.ajax({
+                        url: '/save.php',
+                        data: {'type': 'Base', 'key': parseInt(key), 'title': title, 'num': num, 'status': check},
+                        type: 'POST',
+                        success: function (response) {
+                            console.log(response);
+                            location.reload();
+                        },
+                        error: function (message) {
+                            console.log(message)
+                        }
+                    })
+                });
+                $('.edit').on('click', function () {
+                    var key = $(this).data('key');
+                    var title = $('#title-' + key).val();
+                    var num = $('#num-' + key).val();
+                    var status = $('#status-' + key);
+                    if (title == '' || !num) {
+                        alert('不能为空！');
+                        return false;
+                    }
+                    var check = 0;
+                    if (status.is(':checked')) {
+                        check = 1;
+                    }
+                    $.ajax({
+                        url: '/save.php',
+                        data: {'type': 'Base', 'key': parseInt(key), 'title': title, 'num': num, 'status': check},
+                        type: 'POST',
+                        success: function (response) {
+                            console.log(response);
+                            alert('修改成功！');
+                            location.reload();
+                        },
+                        error: function (message) {
+                            console.log(message)
+                        }
+                    })
+                });
+            });
         </script>
     </body>
 </html>
