@@ -1,5 +1,4 @@
 <?php
-require 'JsonHelper.php';
 
 class XmlHelper
 {
