@@ -1,7 +1,7 @@
 <?php
 require 'require.php';
 
-if(!empty($_GET['type'])){
+if(!empty($_GET['type']) && $_GET['type'] != 'Base'){
     $data = JsonHelper::read($_GET['type']);
     echo XmlHelper::response($data);
     exit;
