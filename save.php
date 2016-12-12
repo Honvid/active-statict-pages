@@ -10,6 +10,6 @@ if(!empty($_POST['type']) && isset($_POST['key']) && !empty($_POST['name'])) {
 
 if(!empty($_POST['type']) && isset($_POST['key']) && !empty($_POST['title']) && !empty($_POST['num'])) {
     if($_POST['type'] == 'Base') {
-        JsonHelper::saveBase(intval($_POST['key']), $_POST['title'], intval($_POST['num']), intval($_POST['status']), $_POST['type']);
+        JsonHelper::saveBase(intval($_POST['key']), $_POST['title'], intval($_POST['num']), 0, intval($_POST['status']), $_POST['type']);
     }
 }

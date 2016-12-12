@@ -10,7 +10,7 @@ if(!empty($_GET['type']) && $_GET['type'] != 'Base'){
     $temp = [];
     foreach ($data as $key => $value) {
         if($value['status']) {
-            $temp[] = $value;
+            $temp[$key] = $value;
         }
     }
     echo XmlHelper::responseBase($temp);
