@@ -56,14 +56,12 @@ class JsonHelper
      * @param  string $fileName [description]
      * @return [type]           [description]
      */
-    public static function saveBase(int $key, string $title, int $num, int $current = 0, int $status, string $fileName)
+    public static function saveBase(int $key, string $title, int $num, string $fileName)
     {
         $data = self::read($fileName);
         $data[$key] = [
             'title' => $title,
-            'num' => $num,
-            'status' => $status,
-            'current' => $current
+            'num' => $num
         ];
         self::write($data, $fileName);
     }

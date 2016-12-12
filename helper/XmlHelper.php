@@ -31,7 +31,7 @@ class XmlHelper
                     $value['current']++;
                 }
             }
-            JsonHelper::saveBase($key, $value['title'], $value['num'], $value['current'], $value['status'], 'Base');
+            JsonHelper::saveBase($key, $value['title'], $value['num'], 'Base');
             $xml .=  '<item title="'.$value['title'].'" num="'.$value['current'] .'" />';
         }
         $xml .=  '</info>';

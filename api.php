@@ -1,5 +1,5 @@
 <?php
-require 'require.php';
+require './require.php';
 
 if(!empty($_GET['type'])){
     $data = JsonHelper::read($_GET['type']);
