@@ -134,7 +134,7 @@ $persons = JsonHelper::read('Persons');
                                     <div class="form-inline m-b-20">
                                         <div class="row">
                                             <div class="col-sm-6">
-                                                <div class="input-group m-b-10">
+                                                <div class="input-group">
                                                     <span class="input-group-addon"><i class="fa fa-user"></i> 参与人数</span>
                                                     <input
                                                             type="number"
@@ -145,15 +145,11 @@ $persons = JsonHelper::read('Persons');
                                                         <button type="button" id="person-submit" class="btn waves-effect waves-light btn-primary">提交</button>
                                                     </span>
                                                 </div>
-                                            </div>
-                                            <div class="col-sm-6 text-xs-center">
-                                                <div class="pull-right">
-                                                    <div class="form-group">
-                                                        <a class="btn btn-success form-control" id="open-all">批量启用</a>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <a class="btn btn-warning form-control" id="close-all">批量禁用</a>
-                                                    </div>
+                                                <div class="form-group">
+                                                    <a class="btn btn-success form-control" id="open-all">批量启用</a>
+                                                </div>
+                                                <div class="form-group">
+                                                    <a class="btn btn-warning form-control" id="close-all">批量禁用</a>
                                                 </div>
                                             </div>
                                         </div>
