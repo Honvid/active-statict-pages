@@ -1,6 +1,14 @@
 <?php
 require './require.php';
 
+XmlHelper::readAndWrite('BigData');
+
+XmlHelper::readAndWrite('Brain');
+
+XmlHelper::readAndWrite('Cloud');
+
+XmlHelper::readAndWrite('Human');
+
 if(!empty($_GET['type'])){
     $data = JsonHelper::read($_GET['type']);
     if($_GET['type'] == 'Base') {

@@ -10,11 +10,11 @@ set_time_limit(0);
 $base = '/data/wwwroot/active.honvid.com/data/Base.json';
 $person = '/data/wwwroot/active.honvid.com/data/Persons.json';
 $i = 0;
-$seven = strtotime('2016-12-13 07:30');
-$eight = strtotime('2016-12-13 08:00');
-$nine = strtotime('2016-12-13 09:00');
-$twelve = strtotime('2016-12-13 12:00');
-$after = strtotime('2016-12-13 17:00');
+$seven = strtotime('2016-12-12 07:30');
+$eight = strtotime('2016-12-12 08:00');
+$nine = strtotime('2016-12-12 09:00');
+$twelve = strtotime('2016-12-12 12:00');
+$after = strtotime('2016-12-12 17:00');
 // 在早上07：30的时候云计算 大数据 软件定义 融合架构  200起 但是要按顺序来
 // 8：00时候 云计算 达到500 左右
 // 9：00 云计算达到4000
@@ -25,38 +25,35 @@ while ($i < 10) {
     $baseData = JsonHelper::read('Base');
     $now = time();
     foreach ($baseData as $index => &$data) {
-        $step = round(10 / ($index+1), 2);
-        if($now < $seven) {
-            $total = 200;
-            $data['num'] += rand(ceil( ceil($step) / 2 ), ceil($step));
-        }elseif ($now < $eight) {
+        $quan = round(10 / ($index+1), 2);
+        if($now < $eight) {
             $step = 10;
             $total = 500;
-            $data['num'] += rand(ceil( ceil($step) / 2 ), ceil($step));
         } elseif ($now > $eight && $now < $nine) {
             $step = 60;
             $total = 4000;
-            $data['num'] += rand(ceil( ceil($step) / 2 ), ceil($step));
 
         } elseif ($now > $nine && $now < $twelve) {
             $step = 3;
             $total = 4500;
-            $data['num'] += rand(ceil( ceil($step) / 2 ), ceil($step));
 
         } elseif ($now > $twelve) {
             $step = 5;
             $total = 6000;
-            $data['num'] += rand(ceil( ceil($step) / 2 ), ceil($step));
 
         } else {
             $step = 1;
             $total = 6000;
-            $data['num'] += rand(ceil( ceil($step) / 2 ), ceil($step));
+        }
+        if( ($data['num'] - $total) > ($step * 2 )) {
+            $data['num'] += ceil($quan);
+        }else{
+            $data['num'] += ceil(rand($step / ($index + 1), $step / ($index + 2)));
         }
     }
     $i++;
     JsonHelper::write($baseData, 'Base');
-//    sleep(2);
+    sleep(6);
 }
 var_dump($baseData);die;
 
