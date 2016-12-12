@@ -2037,3 +2037,7 @@ div.hopscotch-bubble .hopscotch-bubble-arrow-container.down .hopscotch-bubble-ar
   background-color: rgba(152, 166, 173, 0.2) !important;
   padding: 20px;
 }
+.bootstrap-table .table > tbody > tr > td {
+  padding: 10px !important;
+  vertical-align: middle;
+}

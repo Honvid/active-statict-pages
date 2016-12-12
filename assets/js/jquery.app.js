@@ -314,5 +314,6 @@ $(document).ready(function() {
             $(this).parent().parent().prev().click(); // click the item to make it drop
         }
     });
+    $(".select2").select2();
 });
 

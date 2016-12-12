@@ -16,6 +16,7 @@ $persons = JsonHelper::read('Persons');
     <title>活动管理</title>
     <link href="assets/plugins/bootstrap-table/css/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/plugins/switchery/css/switchery.min.css" rel="stylesheet" />
+    <link href="assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
@@ -160,10 +161,10 @@ $persons = JsonHelper::read('Persons');
                                             <td><input type="checkbox" class="all check-child" value="<?php echo $key; ?>"></td>
                                             <td><?php echo $key+1; ?></td>
                                             <td>
-                                                <input type="text" id="title-<?php echo $key; ?>"  value="<?php echo $value['title']; ?>">
+                                                <input type="text" class="form-control"  id="title-<?php echo $key; ?>"  value="<?php echo $value['title']; ?>">
                                             </td>
                                             <td>
-                                                <input type="number" id="num-<?php echo $key; ?>"  value="<?php echo $value['num']; ?>">
+                                                <input type="number" class="form-control"  id="num-<?php echo $key; ?>"  value="<?php echo $value['num']; ?>">
                                             </td>
                                             <td>
                                                 <input type="checkbox"
@@ -216,6 +217,7 @@ $persons = JsonHelper::read('Persons');
 
 <script src="assets/plugins/switchery/js/switchery.min.js"></script>
 <script src="assets/plugins/bootstrap-table/js/bootstrap-table.min.js"></script>
+<script src="assets/plugins/select2/js/select2.min.js" type="text/javascript"></script>
 
 <script src="assets/pages/jquery.bs-table.js"></script>
 

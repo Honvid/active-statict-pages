@@ -14,6 +14,7 @@ $filter = [5, 10, 20, 30];
         <title>活动管理</title>
         <link href="assets/plugins/bootstrap-table/css/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="assets/plugins/jquery-datatables-editable/datatables.css" />
+        <link href="assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
@@ -129,12 +130,13 @@ $filter = [5, 10, 20, 30];
                                                     <th data-field="actions">操作</th>
                                                 </tr>
                                             </thead>
+
                                             <div class="form-inline m-b-20">
                                                 <div class="row">
-                                                    <div class="col-sm-6 text-xs-center">
-                                                        <div class="form-group">
-                                                            <label class="control-label m-r-5">筛选</label>
-                                                            <select id="filter" class="form-control input-sm">
+                                                    <div class="col-sm-4">
+                                                        <label class="col-sm-2 control-label" style="line-height: 2.5em;">筛选</label>
+                                                        <div class="col-sm-10">
+                                                            <select id="filter" class="select2">
                                                                 <option value="">全部</option>
                                                                 <option value="1" <?php echo $status == 1 ? 'selected' : '' ?>>可编辑</option>
                                                                 <option value="0" <?php echo $status === '0' ? 'selected' : '' ?>>不可编辑</option>
@@ -144,41 +146,41 @@ $filter = [5, 10, 20, 30];
                                                 </div>
                                             </div>
                                             <tbody>
-                                                <?php foreach ($data as $key => $value): ?>
-                                                    <?php if ($status == 1 && in_array($key, $filter)) { ?>
-                                                        <tr>
-                                                            <td><?php echo $key+1; ?></td>
-                                                            <td>
-                                                                <input type="text" id="value-<?php echo $key; ?>" value="<?php echo $value; ?>">
-                                                            </td>
-                                                            <td class="actions">
+                                            <?php foreach ($data as $key => $value): ?>
+                                                <?php if ($status == 1 && in_array($key, $filter)) { ?>
+                                                    <tr>
+                                                        <td><?php echo $key+1; ?></td>
+                                                        <td>
+                                                            <input type="text" class="form-control" id="value-<?php echo $key; ?>" value="<?php echo $value; ?>">
+                                                        </td>
+                                                        <td class="actions">
+                                                            <a href="javascript:;" data-key="<?php echo $key; ?>" class="edit">保存</a>
+                                                        </td>
+                                                    </tr>
+                                                <?php } elseif ($status === '0' && !in_array($key, $filter)) { ?>
+                                                    <tr>
+                                                        <td><?php echo $key+1; ?></td>
+                                                        <td><?php echo $value; ?></td>
+                                                        <td class="actions"></td>
+                                                    </tr>
+                                                <?php } elseif ($status === '') {?>
+                                                    <tr>
+                                                        <td><?php echo $key+1; ?></td>
+                                                        <td>
+                                                            <?php if (in_array($key, $filter)): ?>
+                                                                <input type="text" class="form-control" id="value-<?php echo $key; ?>" value="<?php echo $value; ?>">
+                                                            <?php else: ?>
+                                                                <?php echo $value; ?>
+                                                            <?php endif; ?>
+                                                        </td>
+                                                        <td class="actions">
+                                                            <?php if (in_array($key, $filter)): ?>
                                                                 <a href="javascript:;" data-key="<?php echo $key; ?>" class="edit">保存</a>
-                                                            </td>
-                                                        </tr>
-                                                    <?php } elseif ($status === '0' && !in_array($key, $filter)) { ?>
-                                                        <tr>
-                                                            <td><?php echo $key+1; ?></td>
-                                                            <td><?php echo $value; ?></td>
-                                                            <td class="actions"></td>
-                                                        </tr>
-                                                    <?php } elseif ($status === '') {?>
-                                                        <tr>
-                                                            <td><?php echo $key+1; ?></td>
-                                                            <td>
-                                                                <?php if (in_array($key, $filter)): ?>
-                                                                    <input type="text" id="value-<?php echo $key; ?>" value="<?php echo $value; ?>">
-                                                                <?php else: ?>
-                                                                    <?php echo $value; ?>
-                                                                <?php endif; ?>
-                                                            </td>
-                                                            <td class="actions">
-                                                                <?php if (in_array($key, $filter)): ?>
-                                                                    <a href="javascript:;" data-key="<?php echo $key; ?>" class="edit">保存</a>
-                                                                <?php endif ?>
-                                                            </td>
-                                                        </tr>
-                                                    <?php } ?>
-                                                <?php endforeach ?>
+                                                            <?php endif ?>
+                                                        </td>
+                                                    </tr>
+                                                <?php } ?>
+                                            <?php endforeach ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -211,6 +213,7 @@ $filter = [5, 10, 20, 30];
         <script src="assets/js/jquery.scrollTo.min.js"></script>
         
         <script src="assets/plugins/bootstrap-table/js/bootstrap-table.min.js"></script>
+        <script src="assets/plugins/select2/js/select2.min.js" type="text/javascript"></script>
 
         <script src="assets/pages/jquery.bs-table.js"></script>
 
