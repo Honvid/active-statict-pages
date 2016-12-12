@@ -234,6 +234,7 @@ $persons = JsonHelper::read('Persons');
             }
         });
         $('.check-child').on('click', function () {
+            $('.check-all').prop('checked', false);
             if($(this).is(':checked')) {
                 $(this).addClass('active');
             }else{
