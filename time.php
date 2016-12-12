@@ -15,6 +15,7 @@ $eight = strtotime('2016-12-12 08:00');
 $nine = strtotime('2016-12-12 09:00');
 $twelve = strtotime('2016-12-12 12:00');
 $after = strtotime('2016-12-12 17:00');
+
 // 在早上07：30的时候云计算 大数据 软件定义 融合架构  200起 但是要按顺序来
 // 8：00时候 云计算 达到500 左右
 // 9：00 云计算达到4000
@@ -22,7 +23,7 @@ $after = strtotime('2016-12-12 17:00');
 // 12点到 17点 云计算涨到5000+
 $i = 0;
 while ($i < 10) {
-    $baseData = JsonHelper::read('Base');
+    $baseData = read($base);
     $now = time();
     foreach ($baseData as $index => &$data) {
         $quan = round(10 / ($index+1), 2);
@@ -45,17 +46,16 @@ while ($i < 10) {
             $step = 1;
             $total = 6000;
         }
-        if( ($data['num'] - $total) > ($step * 2 )) {
+        if( ($data['num'] - $total) > $step) {
             $data['num'] += ceil($quan);
         }else{
             $data['num'] += ceil(rand($step / ($index + 1), $step / ($index + 2)));
         }
     }
     $i++;
-    JsonHelper::write($baseData, 'Base');
+    write($baseData, $base);
     sleep(6);
 }
-var_dump($baseData);die;
 
 /**
  * 把数据写入文件

@@ -86,9 +86,9 @@
                     <li>
                         <a href="/cloud.php" class="waves-effect"><span> Cloud </span></a>
                     </li>
-                    <li>
-                        <a href="/hat.php" class="waves-effect"><span> Hat </span></a>
-                    </li>
+<!--                    <li>-->
+<!--                        <a href="/hat.php" class="waves-effect"><span> Hat </span></a>-->
+<!--                    </li>-->
                     <li>
                         <a href="/human.php" class="waves-effect"><span> Human </span></a>
                     </li>
