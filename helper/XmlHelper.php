@@ -2,7 +2,7 @@
 
 class XmlHelper
 {
-    public static function respone($data)
+    public static function response($data)
     {
         header("Content-type:text/xml");
         $xml = '<?xml version="1.0" encoding="utf-8"?>';
@@ -14,7 +14,7 @@ class XmlHelper
         return $xml;
     }
 
-    public static function responeBase($data)
+    public static function responseBase($data)
     {
         header("Content-type:text/xml");
         $xml = '<?xml version="1.0" encoding="utf-8"?>';

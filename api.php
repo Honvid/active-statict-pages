@@ -3,7 +3,7 @@ require 'require.php';
 
 if(!empty($_GET['type'])){
     $data = JsonHelper::read($_GET['type']);
-    echo XmlHelper::respone($data);
+    echo XmlHelper::response($data);
     exit;
 }else{
     $data = JsonHelper::read('Base');
@@ -13,6 +13,6 @@ if(!empty($_GET['type'])){
             $temp[] = $value;
         }
     }
-    echo XmlHelper::responeBase($temp);
+    echo XmlHelper::responseBase($temp);
     exit;
 }
