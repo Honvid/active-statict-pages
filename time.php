@@ -52,13 +52,10 @@ $status = [
 // 9~12点 达到4500
 // 12点到 17点 云计算涨到5000+
 $i = 0;
-while ($i < 10) {
+while ($i < 6) {
     $baseData = read($base);
     $now = time();
     foreach ($baseData as $index => &$data) {
-        if($i > 3 && $i < 7 && mt_rand(0, 1)) {
-            continue;
-        }
         $quan = round(10 / ($index+1) / 10, 3);
         if($now < $eight) {
             $step = mt_rand($rand[0][$index][0], $rand[0][$index][1]);
@@ -91,7 +88,7 @@ while ($i < 10) {
     echo date('Y-m-d H:i:s') . '------------------'."\n";
     echo json_encode($baseData, JSON_UNESCAPED_UNICODE) . "\n";
     write($baseData, $base);
-    sleep(6);
+    sleep(8);
 }
 
 
