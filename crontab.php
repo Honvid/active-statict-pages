@@ -27,7 +27,9 @@ $i = 0;
 while ($i < 10) {
     $now = time();
     foreach ($data as $key => &$item) {
-        if ($now > $seven && $now <= $eight) {
+        if($now <= $seven) {
+            continue;
+        }elseif ($now > $seven && $now <= $eight) {
             $item['number'][0] = countNumber(
                 $item['number'][0],
                 $item['number'][2],
@@ -55,6 +57,15 @@ while ($i < 10) {
                 $i
             );
         } elseif ($now > $twelve && $now <= $after) {
+            $item['number'][0] = countNumber(
+                $item['number'][0],
+                $item['number'][5],
+                $key,
+                $now,
+                $after,
+                $i
+            );
+        }else{
             $item['number'][0] = countNumber(
                 $item['number'][0],
                 $item['number'][5],
