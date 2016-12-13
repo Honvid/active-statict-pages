@@ -55,7 +55,7 @@ $i = 0;
 while ($i < 3) {
     $baseData = read($base);
     $now = time();
-    if(mt_rand(0, 1)) {
+    if(mt_rand(0, 2) == 1) {
         foreach ($baseData as $index => &$data) {
             $quan = round(10 / ($index + 1) / 10, 3);
             if ($now < $eight) {
