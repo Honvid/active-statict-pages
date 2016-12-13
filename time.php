@@ -1,5 +1,4 @@
 <?php
-require 'helper/JsonHelper.php';
 /**
  * @author Honvid
  * @time: 2016/12/12  下午9:16
@@ -10,11 +9,11 @@ set_time_limit(0);
 $base = '/data/wwwroot/active.honvid.com/data/Base';
 $person = '/data/wwwroot/active.honvid.com/data/Persons';
 $i = 0;
-$seven = strtotime('2016-12-12 07:30');
-$eight = strtotime('2016-12-12 08:00');
-$nine = strtotime('2016-12-12 09:00');
-$twelve = strtotime('2016-12-12 12:00');
-$after = strtotime('2016-12-12 17:00');
+$seven = strtotime('2016-12-13 07:30');
+$eight = strtotime('2016-12-13 08:00');
+$nine = strtotime('2016-12-13 09:00');
+$twelve = strtotime('2016-12-13 12:00');
+$after = strtotime('2016-12-13 17:00');
 
 // 在早上07：30的时候云计算 大数据 软件定义 融合架构  200起 但是要按顺序来
 // 8：00时候 云计算 达到500 左右
@@ -49,7 +48,7 @@ while ($i < 10) {
         if( ($data['num'] - $total) > $step) {
             $data['num'] += ceil($quan);
         }else{
-            $data['num'] += ceil(rand($step / ($index + 1), $step / ($index + 2)));
+            $data['num'] += ceil(rand($step / ($index + 2), $step / ($index + 1)));
         }
     }
     $i++;

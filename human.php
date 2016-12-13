@@ -2,7 +2,7 @@
 require 'require.php';
 $type = 'Human';
 $data = JsonHelper::read($type);
-$filter = [5, 10, 20, 30];
+$filter = [1, 2, 6, 16, 44, 99, 101, 118, 120, 124];
 
 require 'partial/header.php';
 require 'partial/footer.php';
