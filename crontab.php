@@ -10,8 +10,8 @@ set_time_limit(0);
 
 require 'helper/JsonHelper.php';
 
-$seven = strtotime('2016-12-13 22:00');
-$eight = strtotime('2016-12-13 22:10');
+$seven = strtotime('2016-12-13 22:10');
+$eight = strtotime('2016-12-13 22:15');
 $nine = strtotime('2016-12-14 09:00');
 $twelve = strtotime('2016-12-14 12:00');
 $after = strtotime('2016-12-14 17:00');
@@ -31,7 +31,7 @@ while ($i < 6) {
             continue;
         }elseif ($now > $seven && $now <= $eight) {
             if($item['number'][2] - $item['number'][0]) {
-                $item['number'][0] += round(($item['number'][2] - $item['number'][1]) / 180);
+                $item['number'][0] += round(($item['number'][2] - $item['number'][1]) / 30);
             }else{
                 $item['number'][0] += intval(floor(10 / ($key+ 1) / 10));
             }
