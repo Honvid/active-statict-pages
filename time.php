@@ -52,7 +52,7 @@ $status = [
 // 9~12点 达到4500
 // 12点到 17点 云计算涨到5000+
 $i = 0;
-while ($i < 6) {
+while ($i < 3) {
     $baseData = read($base);
     $now = time();
     foreach ($baseData as $index => &$data) {
@@ -88,7 +88,7 @@ while ($i < 6) {
     echo date('Y-m-d H:i:s') . '------------------'."\n";
     echo json_encode($baseData, JSON_UNESCAPED_UNICODE) . "\n";
     write($baseData, $base);
-    sleep(8);
+    sleep(18);
 }
 
 
