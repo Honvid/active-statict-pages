@@ -55,8 +55,8 @@ $i = 0;
 while ($i < 3) {
     $baseData = read($base);
     $now = time();
-    foreach ($baseData as $index => &$data) {
-        if(mt_rand(0, 1)) {
+    if(mt_rand(0, 1)) {
+        foreach ($baseData as $index => &$data) {
             $quan = round(10 / ($index + 1) / 10, 3);
             if ($now < $eight) {
                 $step = mt_rand($rand[0][$index][0], $rand[0][$index][1]);
@@ -77,7 +77,7 @@ while ($i < 3) {
                 $step = 1;
                 $total = 6000;
             }
-            if (($data['num'] - $total) > $step ) {
+            if (($data['num'] - $total) > $step) {
                 if (mt_rand(0, 1)) {
                     $data['num'] += mt_rand(0, 2);
                 }
