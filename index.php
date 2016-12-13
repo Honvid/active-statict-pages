@@ -230,7 +230,7 @@
                 type: 'POST',
                 success: function (response) {
                     console.log(response);
-                    alert('修改成功！');
+//                    alert('修改成功！');
                     location.reload();
                 },
                 error: function (message) {
