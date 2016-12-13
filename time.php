@@ -85,11 +85,11 @@ while ($i < 3) {
                 $data['num'] += $step;
             }
         }
+        echo date('Y-m-d H:i:s') . '------------------'."\n";
+        echo json_encode($baseData, JSON_UNESCAPED_UNICODE) . "\n";
+        write($baseData, $base);
     }
     $i++;
-    echo date('Y-m-d H:i:s') . '------------------'."\n";
-    echo json_encode($baseData, JSON_UNESCAPED_UNICODE) . "\n";
-    write($baseData, $base);
     sleep(18);
 }
 
