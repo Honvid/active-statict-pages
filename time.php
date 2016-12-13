@@ -41,6 +41,11 @@ $rand = [
     ],
 ];
 
+$status = [
+    true,
+    false,
+];
+
 // 在早上07：30的时候云计算 大数据 软件定义 融合架构  200起 但是要按顺序来
 // 8：00时候 云计算 达到500 左右
 // 9：00 云计算达到4000
@@ -51,8 +56,10 @@ while ($i < 10) {
     $baseData = read($base);
     $now = time();
     foreach ($baseData as $index => &$data) {
+        if($i > 3 && $i < 7 && mt_rand(0, 1)) {
+            continue;
+        }
         $quan = round(10 / ($index+1) / 10, 3);
-
         if($now < $eight) {
             $step = mt_rand($rand[0][$index][0], $rand[0][$index][1]);
             $total = 500;
@@ -73,7 +80,9 @@ while ($i < 10) {
             $total = 6000;
         }
         if( ($data['num'] - $total) > $step) {
-            $data['num'] += mt_rand(ceil($quan), 3);
+            if($i >= 3 && $i < 7 && mt_rand(0, 1)) {
+                $data['num'] += mt_rand(ceil($quan), 3);
+            }
         }else{
             $data['num'] += $step;
         }
