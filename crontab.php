@@ -31,32 +31,31 @@ while ($i < 6) {
             continue;
         }elseif ($now > $seven && $now <= $eight) {
             if($item['number'][2] - $item['number'][0]) {
-                $item['number'][0] += intval(floor(($item['number'][2] - $item['number'][1]) / 180));
+                $item['number'][0] += round(($item['number'][2] - $item['number'][1]) / 180);
             }else{
                 $item['number'][0] += intval(floor(10 / ($key+ 1) / 10));
             }
         } elseif ($now > $eight && $now <= $nine) {
             if($item['number'][3] - $item['number'][0]) {
-                $item['number'][0] += intval(floor(($item['number'][3] - $item['number'][2]) / 360));
+                $item['number'][0] += round(($item['number'][3] - $item['number'][2]) / 360);
             }else{
                 $item['number'][0] += intval(floor(10 / ($key+ 1) / 10));
             }
         } elseif ($now > $nine && $now <= $twelve) {
             if($item['number'][4] - $item['number'][0]) {
-                $item['number'][0] += intval(floor(($item['number'][4] - $item['number'][3]) / 1080));
+                $item['number'][0] += round(($item['number'][4] - $item['number'][3]) / 1080);
             }else{
                 $item['number'][0] += intval(floor(10 / ($key+ 1) / 10));
             }
         } elseif ($now > $twelve && $now <= $after) {
             if($item['number'][5] - $item['number'][0]) {
-                $item['number'][0] += intval(floor(($item['number'][5] - $item['number'][4]) / 1800));
+                $item['number'][0] += round(($item['number'][5] - $item['number'][4]) / 1800);
             }else{
                 $item['number'][0] += intval(floor(10 / ($key+ 1) / 10));
             }
         }else{
             $item['number'][0] += intval(floor(10 / ($key+ 1) / 10));
         }
-        $item['number'][0] = intval($item['number'][0]);
     }
     echo date('Y-m-d H:i:s') . '------------------'."\n";
     echo json_encode($data, JSON_UNESCAPED_UNICODE) . "\n";
