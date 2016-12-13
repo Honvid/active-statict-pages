@@ -76,7 +76,7 @@ function countNumber($current, $total, $key, $now, $task, $i)
     $quan = round(10 / ($key + 1));
     $result = $total - $current;
     if($result > 0) {
-        return $current + ceil($result / ($task - $now) / 60 / (10 - $i));
+        return $current + round($result / ($task - $now) / 60 / (10 - $i));
     }else{
         return $current + $quan;
     }
