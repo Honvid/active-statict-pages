@@ -17,22 +17,10 @@ class XmlHelper
     public static function responseBase($data)
     {
         header("Content-type:text/xml");
-        $step = 50;
         $xml = '<?xml version="1.0" encoding="utf-8"?>';
         $xml .=  '<info>';
         foreach ($data as $key => $value) {
-            if(!isset($value['current'])) {
-                $value['current'] = 0;
-            }
-            if($value['num'] > $value['current']) {
-                if($value['num'] - $value['current'] > $step) {
-                    $value['current'] += $step;
-                }else{
-                    $value['current']++;
-                }
-            }
-            JsonHelper::saveBase($key, $value['title'], $value['num'], 'Base');
-            $xml .=  '<item title="'.$value['title'].'" num="'.$value['current'] .'" />';
+            $xml .=  '<item title="'.$value['title'].'" num="'.$value['num'] .'" />';
         }
         $xml .=  '</info>';
         return $xml;
