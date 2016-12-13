@@ -10,11 +10,11 @@ set_time_limit(0);
 
 require 'helper/JsonHelper.php';
 
-$seven = strtotime('2016-12-13 18:30');
-$eight = strtotime('2016-12-13 19:00');
-$nine = strtotime('2016-12-13 20:00');
-$twelve = strtotime('2016-12-13 23:00');
-$after = strtotime('2016-12-14 4:00');
+$seven = strtotime('2016-12-13 20:40');
+$eight = strtotime('2016-12-13 21:10');
+$nine = strtotime('2016-12-13 20:10');
+$twelve = strtotime('2016-12-13 23:10');
+$after = strtotime('2016-12-14 4:10');
 
 // 在早上07：30的时候云计算 大数据 软件定义 融合架构  200起 但是要按顺序来
 // 8：00时候 云计算 达到500 左右
