@@ -10,11 +10,11 @@ set_time_limit(0);
 
 require 'helper/JsonHelper.php';
 
-$seven = strtotime('2016-12-13 17:50');
-$eight = strtotime('2016-12-13 18:20');
-$nine = strtotime('2016-12-13 19:20');
-$twelve = strtotime('2016-12-13 22:20');
-$after = strtotime('2016-12-14 3:20');
+$seven = strtotime('2016-12-13 18:30');
+$eight = strtotime('2016-12-13 19:00');
+$nine = strtotime('2016-12-13 20:00');
+$twelve = strtotime('2016-12-13 23:00');
+$after = strtotime('2016-12-14 4:00');
 
 // 在早上07：30的时候云计算 大数据 软件定义 融合架构  200起 但是要按顺序来
 // 8：00时候 云计算 达到500 左右
@@ -24,66 +24,42 @@ $after = strtotime('2016-12-14 3:20');
 
 $data = JsonHelper::read('Base');
 $i = 0;
-while ($i < 10) {
+while ($i < 6) {
     $now = time();
     foreach ($data as $key => &$item) {
         if($now <= $seven) {
             continue;
         }elseif ($now > $seven && $now <= $eight) {
-            $item['number'][0] = countNumber(
-                $item['number'][0],
-                $item['number'][2],
-                $key,
-                $now,
-                $eight
-            );
+            if($item['number'][2] - $item['number'][0]) {
+                $item['number'][0] += (($item['number'][2] - $item['number'][1]) / 300);
+            }else{
+                $item['number'][0] += intval(floor(10 / ($key+ 1) / 10));
+            }
         } elseif ($now > $eight && $now <= $nine) {
-            $item['number'][0] = countNumber(
-                $item['number'][0],
-                $item['number'][3],
-                $key,
-                $now,
-                $nine
-            );
+            if($item['number'][3] - $item['number'][0]) {
+                $item['number'][0] += (($item['number'][3] - $item['number'][1]) / 300);
+            }else{
+                $item['number'][0] += intval(floor(10 / ($key+ 1) / 10));
+            }
         } elseif ($now > $nine && $now <= $twelve) {
-            $item['number'][0] = countNumber(
-                $item['number'][0],
-                $item['number'][4],
-                $key,
-                $now,
-                $twelve
-            );
+            if($item['number'][4] - $item['number'][0]) {
+                $item['number'][0] += (($item['number'][4] - $item['number'][1]) / 300);
+            }else{
+                $item['number'][0] += intval(floor(10 / ($key+ 1) / 10));
+            }
         } elseif ($now > $twelve && $now <= $after) {
-            $item['number'][0] = countNumber(
-                $item['number'][0],
-                $item['number'][5],
-                $key,
-                $now,
-                $after
-            );
+            if($item['number'][5] - $item['number'][0]) {
+                $item['number'][0] += (($item['number'][5] - $item['number'][1]) / 300);
+            }else{
+                $item['number'][0] += intval(floor(10 / ($key+ 1) / 10));
+            }
         }else{
-            $item['number'][0] = countNumber(
-                $item['number'][0],
-                $item['number'][5],
-                $key,
-                $now,
-                $after
-            );
+            $item['number'][0] += intval(floor(10 / ($key+ 1) / 10));
         }
     }
     echo date('Y-m-d H:i:s') . '------------------'."\n";
     echo json_encode($data, JSON_UNESCAPED_UNICODE) . "\n";
     JsonHelper::write($data, 'Base');
     $i++;
-    sleep(6);
-}
-function countNumber($current, $total, $key, $now, $task)
-{
-    $quan = round(10 / ($key + 1));
-    $result = $total - $current;
-    if($result > 0) {
-        return $current + intval(floor($result / ( ($task - $now) / 600) ));
-    }else{
-        return $current + $quan;
-    }
+    sleep(10);
 }
