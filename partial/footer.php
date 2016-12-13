@@ -34,7 +34,12 @@
                                 <?php endif; ?>
                             </td>
                             <td class="actions">
-                                <a href="javascript:;" data-key="<?php echo $key; ?>" class="edit">保存</a>
+
+                                <?php if (in_array($key+1, $filter)) :?>
+                                    <a href="javascript:;" data-key="<?php echo $key; ?>" class="btn btn-danger waves-effect waves-light edit">保存</a>
+                                <?php else: ?>
+                                    <a href="javascript:;" data-key="<?php echo $key; ?>" class="btn btn-warning waves-effect waves-light edit">保存</a>
+                                <?php endif; ?>
                             </td>
                         </tr>
                     <?php endforeach ?>

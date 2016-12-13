@@ -64,7 +64,7 @@
 <!--                                                    --><?php //endif ?><!-- id="status---><?php //echo $key; ?><!--" data-plugin="switchery" data-color="#34d3eb" data-size="small" />-->
 <!--                                            </td>-->
                                             <td class="actions">
-                                                <a href="javascript:;" data-key="<?php echo $key; ?>" class="btn btn-danger btn-rounded waves-effect waves-light edit">保存</a>
+                                                <a href="javascript:;" data-key="<?php echo $key; ?>" class="btn btn-danger waves-effect waves-light edit">保存</a>
                                             </td>
                                         </tr>
                                     <?php endforeach ?>
