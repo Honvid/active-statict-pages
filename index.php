@@ -16,7 +16,12 @@
 <!--                                        <th><input type="checkbox" class="check-all"></th>-->
                                         <th>编号</th>
                                         <th>词组</th>
-                                        <th>数量</th>
+                                        <th>现在数量</th>
+                                        <th>7:30</th>
+                                        <th>8:00</th>
+                                        <th>9:00</th>
+                                        <th>12:00</th>
+                                        <th>17:00</th>
 <!--                                        <th>是否启用</th>-->
                                         <th>操作</th>
                                     </tr>
@@ -47,22 +52,28 @@
                                     <tbody>
                                     <?php foreach ($data as $key => $value): ?>
                                         <tr>
-<!--                                            <td><input type="checkbox" class="all check-child" value="--><?php //echo $key; ?><!--"></td>-->
                                             <td><?php echo $key+1; ?></td>
                                             <td>
                                                 <input type="text" class="form-control"  id="title-<?php echo $key; ?>"  value="<?php echo $value['title']; ?>">
                                             </td>
                                             <td>
-                                                <input type="number" class="form-control"  id="num-<?php echo $key; ?>"  value="<?php echo $value['num']; ?>">
+                                                <input type="number" class="form-control number-<?php echo $key; ?>" value="<?php echo $value['number'][0]; ?>">
                                             </td>
-<!--                                            <td>-->
-<!--                                                <input type="checkbox"-->
-<!--                                                       class="switch-box"-->
-<!--                                                       data-key="--><?php //echo $key; ?><!--"-->
-<!--                                                    --><?php //if (!empty($value['status'])): ?>
-<!--                                                        checked-->
-<!--                                                    --><?php //endif ?><!-- id="status---><?php //echo $key; ?><!--" data-plugin="switchery" data-color="#34d3eb" data-size="small" />-->
-<!--                                            </td>-->
+                                            <td>
+                                                <input type="number" class="form-control number-<?php echo $key; ?>" value="<?php echo $value['number'][1]; ?>">
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control number-<?php echo $key; ?>" value="<?php echo $value['number'][2]; ?>">
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control number-<?php echo $key; ?>" value="<?php echo $value['number'][3]; ?>">
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control number-<?php echo $key; ?>" value="<?php echo $value['number'][4]; ?>">
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control number-<?php echo $key; ?>" value="<?php echo $value['number'][5]; ?>">
+                                            </td>
                                             <td class="actions">
                                                 <a href="javascript:;" data-key="<?php echo $key; ?>" class="btn btn-danger waves-effect waves-light edit">保存</a>
                                             </td>
@@ -115,57 +126,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('.check-all').on('click', function () {
-            if($(this).is(':checked')) {
-                $('.check-child').addClass('active');
-                $('.check-child').prop('checked', true);
-            }else{
-                $('.check-child').removeClass('active');
-                $('.check-child').prop('checked',false);
-            }
-        });
-        $('.check-child').on('click', function () {
-            $('.check-all').prop('checked', false);
-            if($(this).is(':checked')) {
-                $(this).addClass('active');
-            }else{
-                $(this).removeClass('active');
-            }
-        });
-        $('#open-all').on('click', function () {
-            var children = $('input.active');
-            if(children.length > 10 || children.length == 0 ) {
-                alert('批量通过数量最多为10个。');
-                return false;
-            }
-            var keys = [];
-            children.each(function () {
-                keys.push($(this).val());
-            });
-            updateAll(keys, 1)
-        });
-        $('#close-all').on('click', function () {
-            var children = $('input.active');
-            var keys = [];
-            children.each(function () {
-                keys.push($(this).val());
-            });
-            updateAll(keys, 0)
-        });
-        function updateAll(keys, status) {
-            $.ajax({
-                url: '/save.php',
-                data: {'type': 'All', 'keys': keys, 'status' : status},
-                type: 'POST',
-                success: function (response) {
-                    console.log(response);
-                    location.reload();
-                },
-                error: function (message) {
-                    console.log(message)
-                }
-            })
-        }
+
         $('#person-submit').click(function () {
             var number = $('#persons').val();
             if(!number) {
@@ -185,45 +146,18 @@
                 }
             })
         });
-        $('.switch-box').on('change', function () {
-            var key = $(this).data('key');
-            var title = $('#title-' + key).val();
-            var num = $('#num-' + key).val();
-            var status = $('#status-' + key);
-            if (title == '' || !num) {
-                alert('不能为空！');
-                return false;
-            }
-            var check = 0;
-            if (status.is(':checked')) {
-                check = 1;
-            }
-            $.ajax({
-                url: '/save.php',
-                data: {'type': 'Base', 'key': parseInt(key), 'title': title, 'num': num, 'status': check},
-                type: 'POST',
-                success: function (response) {
-                    console.log(response);
-                    location.reload();
-                },
-                error: function (message) {
-                    console.log(message)
-                }
-            })
-        });
         $('.edit').on('click', function () {
             var key = $(this).data('key');
             var title = $('#title-' + key).val();
-            var num = $('#num-' + key).val();
-//            var status = $('#status-' + key);
+            var number = $('.number-'+key);
+            var num = [];
+            number.each(function () {
+                num.push($(this).val());
+            });
             if (title == '' || !num) {
                 alert('不能为空！');
                 return false;
             }
-//            var check = 0;
-//            if (status.is(':checked')) {
-//                check = 1;
-//            }
             $.ajax({
                 url: '/save.php',
                 data: {'type': 'Base', 'key': parseInt(key), 'title': title, 'num': num},
