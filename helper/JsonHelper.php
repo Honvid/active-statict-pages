@@ -14,7 +14,7 @@ class JsonHelper
      * @param  string $fileName [description]
      * @return [type]           [description]
      */
-    public static function write(array $data, string $fileName)
+    public static function write($data, $fileName)
     {
         // 把PHP数组转成JSON字符串
         $json_string = json_encode($data);
@@ -27,7 +27,7 @@ class JsonHelper
      * @param  string $fileName [description]
      * @return [type]           [description]
      */
-    public static function read(string $fileName)
+    public static function read($fileName)
     {
         // 从文件中读取数据到PHP变量
         $json_string = file_get_contents(self::$baseDir . $fileName . '.json');
@@ -42,7 +42,7 @@ class JsonHelper
      * @param  string $fileName [description]
      * @return [type]           [description]
      */
-    public static function save(int $key, string $name, string $fileName)
+    public static function save($key, $name, $fileName)
     {
         $data = self::read($fileName);
         $data[$key] = $name;
@@ -51,17 +51,17 @@ class JsonHelper
 
     /**
      * 保存属性
-     * @param  int    $key      [description]
-     * @param  string $name     [description]
-     * @param  string $fileName [description]
-     * @return [type]           [description]
+     * @param $key
+     * @param $title
+     * @param $num
+     * @param $fileName
      */
-    public static function saveBase(int $key, string $title, int $num, string $fileName)
+    public static function saveBase($key, $title, $num, $fileName)
     {
         $data = self::read($fileName);
         $data[$key] = [
             'title' => $title,
-            'num' => $num
+            'number' => $num
         ];
         self::write($data, $fileName);
     }
