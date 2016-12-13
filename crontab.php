@@ -10,11 +10,11 @@ set_time_limit(0);
 
 require 'helper/JsonHelper.php';
 
-$seven = strtotime('2016-12-13 20:30');
-$eight = strtotime('2016-12-13 21:00');
-$nine = strtotime('2016-12-13 20:00');
-$twelve = strtotime('2016-12-13 23:00');
-$after = strtotime('2016-12-14 04:00');
+$seven = strtotime('2016-12-13 21:30');
+$eight = strtotime('2016-12-13 22:00');
+$nine = strtotime('2016-12-13 23:00');
+$twelve = strtotime('2016-12-14 2:00');
+$after = strtotime('2016-12-14 7:00');
 
 // 在早上07：30的时候云计算 大数据 软件定义 融合架构  200起 但是要按顺序来
 // 8：00时候 云计算 达到500 左右
@@ -49,7 +49,7 @@ while ($i < 6) {
             }
         } elseif ($now > $twelve && $now <= $after) {
             if($item['number'][5] - $item['number'][0]) {
-                $item['number'][0] += intval(floor(($item['number'][5] - $item['number'][3]) / 1800));
+                $item['number'][0] += intval(floor(($item['number'][5] - $item['number'][4]) / 1800));
             }else{
                 $item['number'][0] += intval(floor(10 / ($key+ 1) / 10));
             }
