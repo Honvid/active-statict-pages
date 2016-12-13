@@ -35,8 +35,7 @@ while ($i < 10) {
                 $item['number'][2],
                 $key,
                 $now,
-                $eight,
-                $i
+                $eight
             );
         } elseif ($now > $eight && $now <= $nine) {
             $item['number'][0] = countNumber(
@@ -44,8 +43,7 @@ while ($i < 10) {
                 $item['number'][3],
                 $key,
                 $now,
-                $nine,
-                $i
+                $nine
             );
         } elseif ($now > $nine && $now <= $twelve) {
             $item['number'][0] = countNumber(
@@ -53,8 +51,7 @@ while ($i < 10) {
                 $item['number'][4],
                 $key,
                 $now,
-                $twelve,
-                $i
+                $twelve
             );
         } elseif ($now > $twelve && $now <= $after) {
             $item['number'][0] = countNumber(
@@ -62,8 +59,7 @@ while ($i < 10) {
                 $item['number'][5],
                 $key,
                 $now,
-                $after,
-                $i
+                $after
             );
         }else{
             $item['number'][0] = countNumber(
@@ -71,8 +67,7 @@ while ($i < 10) {
                 $item['number'][5],
                 $key,
                 $now,
-                $after,
-                $i
+                $after
             );
         }
     }
@@ -82,12 +77,12 @@ while ($i < 10) {
     $i++;
     sleep(6);
 }
-function countNumber($current, $total, $key, $now, $task, $i)
+function countNumber($current, $total, $key, $now, $task)
 {
     $quan = round(10 / ($key + 1));
     $result = $total - $current;
     if($result > 0) {
-        return $current + round($result / ( ($task - $now) / 600) );
+        return $current + intval(floor($result / ( ($task - $now) / 600) ));
     }else{
         return $current + $quan;
     }
