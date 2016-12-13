@@ -37,19 +37,19 @@ while ($i < 6) {
             }
         } elseif ($now > $eight && $now <= $nine) {
             if($item['number'][3] - $item['number'][0]) {
-                $item['number'][0] += (($item['number'][3] - $item['number'][1]) / 300);
+                $item['number'][0] += (($item['number'][3] - $item['number'][1]) / 600);
             }else{
                 $item['number'][0] += intval(floor(10 / ($key+ 1) / 10));
             }
         } elseif ($now > $nine && $now <= $twelve) {
             if($item['number'][4] - $item['number'][0]) {
-                $item['number'][0] += (($item['number'][4] - $item['number'][1]) / 300);
+                $item['number'][0] += (($item['number'][4] - $item['number'][1]) / 1800);
             }else{
                 $item['number'][0] += intval(floor(10 / ($key+ 1) / 10));
             }
         } elseif ($now > $twelve && $now <= $after) {
             if($item['number'][5] - $item['number'][0]) {
-                $item['number'][0] += (($item['number'][5] - $item['number'][1]) / 300);
+                $item['number'][0] += (($item['number'][5] - $item['number'][1]) / 3000);
             }else{
                 $item['number'][0] += intval(floor(10 / ($key+ 1) / 10));
             }
