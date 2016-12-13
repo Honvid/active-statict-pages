@@ -25,7 +25,7 @@
                         <tr>
                             <td><?php echo $key+1; ?></td>
                             <td>
-                                <?php if (in_array($key, $filter)) :?>
+                                <?php if (in_array($key+1, $filter)) :?>
                                     <div class="has-error">
                                         <input type="text" id="value-<?php echo $key; ?>" value="<?php echo $value; ?>" class="form-control">
                                     </div>
