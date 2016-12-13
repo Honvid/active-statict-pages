@@ -8,12 +8,7 @@ ignore_user_abort(true);
 set_time_limit(0);
 $base = '/data/wwwroot/active.honvid.com/data/Base';
 $person = '/data/wwwroot/active.honvid.com/data/Persons';
-$i = 0;
-$seven = strtotime('2016-12-13 11:30');
-$eight = strtotime('2016-12-13 12:00');
-$nine = strtotime('2016-12-13 13:00');
-$twelve = strtotime('2016-12-13 16:00');
-$after = strtotime('2016-12-13 21:00');
+
 $rand = [
     0 => [
         0 => [10, 13],
@@ -46,6 +41,11 @@ $status = [
     false,
 ];
 
+$seven = strtotime('2016-12-13 14:30');
+$eight = strtotime('2016-12-13 15:00');
+$nine = strtotime('2016-12-13 16:00');
+$twelve = strtotime('2016-12-13 19:00');
+$after = strtotime('2016-12-13 24:00');
 // 在早上07：30的时候云计算 大数据 软件定义 融合架构  200起 但是要按顺序来
 // 8：00时候 云计算 达到500 左右
 // 9：00 云计算达到4000
@@ -56,32 +56,34 @@ while ($i < 3) {
     $baseData = read($base);
     $now = time();
     foreach ($baseData as $index => &$data) {
-        $quan = round(10 / ($index+1) / 10, 3);
-        if($now < $eight) {
-            $step = mt_rand($rand[0][$index][0], $rand[0][$index][1]);
-            $total = 500;
-        } elseif ($now > $eight && $now < $nine) {
-            $step = mt_rand($rand[1][$index][0], $rand[1][$index][1]);
-            $total = 4000;
+        if(mt_rand(0, 1)) {
+            $quan = round(10 / ($index + 1) / 10, 3);
+            if ($now < $eight) {
+                $step = mt_rand($rand[0][$index][0], $rand[0][$index][1]);
+                $total = 500;
+            } elseif ($now > $eight && $now < $nine) {
+                $step = mt_rand($rand[1][$index][0], $rand[1][$index][1]);
+                $total = 4000;
 
-        } elseif ($now > $nine && $now < $twelve) {
-            $step = mt_rand(ceil($quan * 2.78), 3);
-            $total = 4500;
+            } elseif ($now > $nine && $now < $twelve) {
+                $step = mt_rand(ceil($quan * 2.78), 3);
+                $total = 4500;
 
-        } elseif ($now > $twelve) {
-            $step = mt_rand(ceil($quan * 1.67 * 1.67), 3);
-            $total = 6000;
+            } elseif ($now > $twelve) {
+                $step = mt_rand(ceil($quan * 1.67 * 1.67), 3);
+                $total = 6000;
 
-        } else {
-            $step = 1;
-            $total = 6000;
-        }
-        if( ($data['num'] - $total) > $step) {
-            if($i >= 3 && $i < 7 && mt_rand(0, 1)) {
-                $data['num'] += mt_rand(ceil($quan), 3);
+            } else {
+                $step = 1;
+                $total = 6000;
             }
-        }else{
-            $data['num'] += $step;
+            if (($data['num'] - $total) > $step ) {
+                if (mt_rand(0, 1)) {
+                    $data['num'] += mt_rand(0, 2);
+                }
+            } else {
+                $data['num'] += $step;
+            }
         }
     }
     $i++;
