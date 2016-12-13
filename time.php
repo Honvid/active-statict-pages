@@ -9,11 +9,11 @@ set_time_limit(0);
 $base = '/data/wwwroot/active.honvid.com/data/Base';
 $person = '/data/wwwroot/active.honvid.com/data/Persons';
 $i = 0;
-$seven = strtotime('2016-12-14 07:30');
-$eight = strtotime('2016-12-14 08:00');
-$nine = strtotime('2016-12-14 09:00');
-$twelve = strtotime('2016-12-14 12:00');
-$after = strtotime('2016-12-14 17:00');
+$seven = strtotime('2016-12-13 11:30');
+$eight = strtotime('2016-12-13 12:00');
+$nine = strtotime('2016-12-13 13:00');
+$twelve = strtotime('2016-12-13 16:00');
+$after = strtotime('2016-12-13 21:00');
 $rand = [
     0 => [
         0 => [10, 13],
