@@ -40,12 +40,6 @@
                                                         <button type="button" id="person-submit" class="btn waves-effect waves-light btn-primary">提交</button>
                                                     </span>
                                                 </div>
-<!--                                                <div class="form-group">-->
-<!--                                                    <a class="btn btn-success form-control" id="open-all">批量启用</a>-->
-<!--                                                </div>-->
-<!--                                                <div class="form-group">-->
-<!--                                                    <a class="btn btn-warning form-control" id="close-all">批量禁用</a>-->
-<!--                                                </div>-->
                                             </div>
                                         </div>
                                     </div>
