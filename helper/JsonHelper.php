@@ -66,22 +66,22 @@ class JsonHelper
         self::write($data, $fileName);
     }
 
-    public static function updateAll($keys, $status)
-    {
-        $data = self::read('Base');
-        $temp = 1;
-        if($status == 1) {
-            $temp = 0;
-        }
-        foreach ($data as $k => $item) {
-            if(in_array($k, $keys)) {
-                $data[$k]['status'] = $status;
-                $data[$k]['current'] = $item['num'];
-            }else{
-                $data[$k]['status'] = $temp;
-                $data[$k]['current'] = $item['num'];
-            }
-        }
-        self::write($data, 'Base');
-    }
+//    public static function updateAll($keys, $status)
+//    {
+//        $data = self::read('Base');
+//        $temp = 1;
+//        if($status == 1) {
+//            $temp = 0;
+//        }
+//        foreach ($data as $k => $item) {
+//            if(in_array($k, $keys)) {
+//                $data[$k]['status'] = $status;
+//                $data[$k]['current'] = $item['num'];
+//            }else{
+//                $data[$k]['status'] = $temp;
+//                $data[$k]['current'] = $item['num'];
+//            }
+//        }
+//        self::write($data, 'Base');
+//    }
 }

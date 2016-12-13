@@ -22,10 +22,10 @@ $after = strtotime('2016-12-13 3:00');
 // 9~12点 达到4500
 // 12点到 17点 云计算涨到5000+
 
-$now = time();
 $data = JsonHelper::read('Base');
 $i = 0;
 while ($i < 10) {
+    $now = time();
     foreach ($data as $key => &$item) {
         if ($now > $seven && $now <= $eight) {
             $item['number'][0] = countNumber(
@@ -73,7 +73,7 @@ while ($i < 10) {
 }
 function countNumber($current, $total, $key, $now, $task, $i)
 {
-    $quan = round(10 / ($key + 1) / 10, 3);
+    $quan = round(10 / ($key + 1));
     $result = $total - $current;
     if($result > 0) {
         return $current + ceil($result / ($task - $now) / 60 / (10 - $i));
