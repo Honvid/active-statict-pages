@@ -10,8 +10,8 @@ set_time_limit(0);
 
 require 'helper/JsonHelper.php';
 
-$seven = strtotime('2016-12-14 07:30');
-$eight = strtotime('2016-12-14 08:00');
+$seven = strtotime('2016-12-13 22:00');
+$eight = strtotime('2016-12-13 22:10');
 $nine = strtotime('2016-12-14 09:00');
 $twelve = strtotime('2016-12-14 12:00');
 $after = strtotime('2016-12-14 17:00');
